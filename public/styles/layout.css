@@ -15,11 +15,99 @@ html {
  */
 
 body {
+  font-family: 'Roboto Condensed', sans-serif;
   margin: 0;
+  padding-top: 60px;
   color: #244751;
-  background-color: #eee;
+  background-color: #f2f2f2;
 }
 
+main {
+  background-color: #ffffff;
+  /* position: absolute; */
+  /* margin-top: 40px; */
+  margin-left: auto;
+  margin-right: auto;
+  width: 450px;
+}
+
+.new-tweet {
+  margin-top: 20px;
+}
+
+#tweets-container {
+  width: 410px;
+  /* margin: 20px; */
+  position: relative;
+}
+
+.tweet {
+  width: 410px;
+  border-style: groove;
+  border-color: #f2f2f2;
+  margin: 20px;
+  border-radius: 10px;
+  position: relative;
+  transition: border-color .5s;
+}
+
+#tweets-container:hover{
+  border-color: black;
+}
+
+#name {
+  padding: 15px;
+  margin-top: 10px;
+  color: #0E6E8A;
+  font-size: 1.2em;
+  font-weight: bolder;
+  float: left;
+}
+
+#text {
+  padding-left: 1em;
+  padding-right: 1em;
+  padding-left: 1em;
+  padding-right: 1em;
+  margin-top: 10px;
+}
+
+/* p {
+  padding-left: 1em;
+  padding-right: 1em;
+} */
+
+header {
+  background-color: #f2f2f2;
+  color: #0E6E8A;
+  text-shadow: black;
+  font-weight: bolder;
+  font-size: 1.2em;
+  padding: 0.5em;
+  height: 80px;
+}
+
+img {
+  max-width: 50px;
+  max-height: 50px;
+  border-radius: 7px;
+  float: left;
+}
+
+span {
+  float: right;
+  color: black;
+  font-weight: 300;
+  font-size: 0.9em;
+}
+
+footer {
+  padding-left: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  color: black;
+  font-style: italic;
+}
 /*
  * Additional CSS can be defined below or in other CSS files, as per instructions
  */

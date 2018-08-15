@@ -1,3 +1,4 @@
+/* jshint esversion: 6 */
 "use strict";
 
 // Basic express setup:
@@ -28,6 +29,8 @@ const tweetsRoutes = require("./routes/tweets")(DataHelpers);
 
 // Mount the tweets routes at the "/tweets" path prefix:
 app.use("/tweets", tweetsRoutes);
+
+app.set('view engine', 'ejs');
 
 app.listen(PORT, () => {
   console.log("Example app listening on port " + PORT);
