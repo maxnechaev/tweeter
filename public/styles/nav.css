@@ -36,13 +36,19 @@ z-index: 1;
   margin-right: 5px;
 }
 
-#composeBtn {
+.composeBtn {
+  background-color: #F7F5F4;
+  color: #109D87;
+  font-size: 0.9em;
   position: fixed;
   top: 20px;
   right: 20px;
   float: right;
+  border-radius: 10px;
 }
 
 .composeBtn:hover {
+  background-color: #FFFFFF;
+  color: #14AC94;
   border-color: black;
 }

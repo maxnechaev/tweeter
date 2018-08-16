@@ -25,28 +25,30 @@
     <img class="logo" src="/images/bird.png">
     <span class="header">Tweeter</span>
     <div id="composeBtn">
-      <button class="composeBtn" type="button" name="composeBtn"><strong>Compose a tweet</strong></button>
+      <button id="composeBtn" class="composeBtn" type="button" name="composeBtn">Compose a tweet</button>
     </div>
   </nav>
 
   <!-- Page-specific (main) content here -->
   <main class="container">
-    <!-- <h1>Hello, world</h1> -->
 
     <section class="new-tweet">
-      <h2>Compose Tweet</h2>
+      <h2 style="text-align: center;">Tweet your thoughts &#10000;</h2>
       <hr>
       <form action="/tweets/" method="post">
-        <textarea id="myTweet" name="myTweet" maxlength="140" placeholder="What are you humming about?"></textarea>
+        <textarea id="myTweet" name="text" maxlength="140" placeholder="What are you humming about?"></textarea>
         <br />
-        <input type="submit" value="Tweet">
+        <input id="tweetBtn" type="submit" value="Tweet">
         <span id="counter" class="counter">140</span>
       </form>
     </section>
 
-    <div id="tweets-container">
+    <section>
+      <div id="tweets-container">
+        <!-- Existing tweets go here -->
+      </div>
+    </section>
 
-    </div>
   </main>
   <!-- External JS -->
   <script type="text/javascript" src="/vendor/jquery-2.2.3.min.js"></script>

@@ -4,8 +4,8 @@
  * jQuery is already loaded
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
- // var tweets = require('tweets.json');
 
+$(document).ready(function() {
  const data = [
    {
      "user": {
@@ -53,62 +53,14 @@
    }
  ];
 
- // const createContainer = () => {
- //   const {name, sys:{country}, weather:[{description, main}]} = data;
- //
- //   const $header = $('.result-contaner header');
- //
- //   // const $h2 = $('<h2');//this if for the second option of apending elmnts
- //   $('<h2>')
- //   .attr("id", "location")//adding id with value
- //   .text(`${name}, ${country}`)
- //   .appendTo($header);
- //
- //   // $header.append($h2);//also works the same way
- //   const $div = $('<div').addClass('current-weather');
- //   $('<h2>')
- //   .text(main) //${``} can be ommitted if there is only one elm
- //   .appendTo($div);
- //
- //   $('<p>')
- //   .text(description)
- //   .appendTo($div);
- //
- //   $header.append($div);
- // };
- //
- // $('#tweets-container').on("hover", "article", function (event) { //event delegation
- //
- // });
-
-
-
-
-//  function renderTweets(data, createTweetElement()) {
-//    tweets = {};
-//    let tweet;
-//    for (var i = 0; i < data.length; i++){
-//       tweets = {
-//       tweet: data[i]
-//     };
-//    }
-//    return tweets;
-//    // loops through tweets
-//      // calls createTweetElement for each tweet
-//      // takes return value and appends it to the tweets container
-//  }
-//
-// // console.log(renderTweets(data).length);
-// // console.log(renderTweets(data));
-
-
 const createTweetElement = (tweet) => {
   const {user:{name, avatars:{small}, handle}, content:{text}, created_at} = tweet;
-  console.log(name, handle, small, text, created_at);
-  const $divMain = $('#tweets-container').addClass("#tweets-container #tweets-container:hover");//don't forget to add event delegation from this div to
+  // console.log(name, handle, small, text, created_at);
+  const $divMain = $('#tweets-container').addClass("#tweets-container #tweets-container:hover");//TODO: don't forget to add event delegation here
   const $div = $('<div>')
     .addClass("tweet")
-    .appendTo($divMain);//don't forget to add event delegation from this div to
+
+    .prependTo($divMain);//TODO: don't forget to add event delegation here
 
   const $article = $('<article>');
     $div.append($article);
@@ -131,9 +83,9 @@ const createTweetElement = (tweet) => {
     .appendTo($header);
 
   const $text = $('<p>')
-    .attr("id", "text")
-    .text(`${text}`)
-    .appendTo($article);
+  .attr("id", "text")
+  .text(`${text}`)
+  .appendTo($article);
 
   $article.append('<hr>');
 
@@ -147,8 +99,88 @@ function renderTweets(data, createTweetElement) {
   for (const i in data) {
     createTweetElement(data[i]);
   }
-
 }
-console.log((renderTweets(data, createTweetElement)));
 
- // createTweetElement(data);
+renderTweets(data, createTweetElement);
+
+$("form").on("submit", function(event) { //TODO: need to refactor this
+  event.preventDefault();
+  const newTweet = $("form").serialize();
+  $.ajax({
+    type: "POST",
+    url: "/tweets",
+    data: newTweet,
+    success: function (data) {
+      loadLastTweet()
+      ;
+    },
+  });
+});
+
+function loadLastTweet (){ //TODO: need to refactor this
+  $.ajax({
+    type: "GET",
+    url: "/tweets",
+    success: function (data) {
+      createTweetElement(data[0]);
+    },
+  });
+}
+(function validateForm($){   //validating the entered tweet
+$('form').on('submit', function(){
+  let errors = false;
+  $(".errors").remove();
+
+  if($("#myTweet").val() === ""){
+    $("#myTweet")
+    .after( "<p id ='newTweetError' class='errors'> Tweet something in the field above </p> ");
+    errors = true;
+  } else if ($("#myTweet").val() === null){
+    $("#myTweet")
+    .after( "<p id ='newTweetError' class='errors'> Your tweet returned null </p> ");
+    errors = true;
+  }
+  return !errors;
+});
+})(jQuery);
+
+function hideNewTweetForm(){
+  $('#composeBtn').on('click', function(event){
+    $(".new-tweet").toggle();
+    $('#myTweet').focus();
+  });
+}
+
+hideNewTweetForm();
+
+
+// const $scroll = $('html, body');
+// $('.composeBtn').click(function () {
+//
+//     $scroll.animate({
+//
+//         scrollTop: $($.attr(this, 'href')).offset().top
+//
+//     }, 500);
+//
+//     return false;
+// });
+
+
+
+// function validateForm(){
+//     const text = $('#myTweet').val();
+//     console.log("text is ", text);
+//      // $('.error').hide();
+//
+//         if(text == "") {
+//             $('#myTweet').after('<span class="error"> Please enter your tweet </span>');
+//         }
+//         else if(text == null) {
+//             $('#myTweet').after('<span class="error"> Your tweet returned null</span>');
+//         } else {
+//           return text;
+//         }
+// }
+// validateForm();
+});

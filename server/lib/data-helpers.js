@@ -1,3 +1,4 @@
+// jshint esversion: 6
 "use strict";
 
 // Simulates the kind of delay we see with network or filesystem operations
@@ -18,10 +19,10 @@ module.exports = function makeDataHelpers(db) {
     // Get all tweets in `db`, sorted by newest first
     getTweets: function(callback) {
       simulateDelay(() => {
-        const sortNewestFirst = (a, b) => a.created_at - b.created_at;
+        const sortNewestFirst = (a, b) => b.created_at - a.created_at;
         callback(null, db.tweets.sort(sortNewestFirst));
       });
     }
 
   };
-}
+};

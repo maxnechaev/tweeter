@@ -1,3 +1,4 @@
+// jshint esversion: 6
 "use strict";
 
 // Requiring a JSON file automatically parses it and returns the data. These
@@ -7,4 +8,3 @@ const db = {
 }
 
 module.exports = db;
-
