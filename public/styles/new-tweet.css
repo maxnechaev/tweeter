@@ -1,29 +1,20 @@
-html {
-  box-sizing: border-box;
-}
-*, *:before, *:after {
-  box-sizing: inherit;
-}
-
-body section {
-  padding: 0.5em;
-}
-
 .new-tweet {
-  display: none;
-  height: 100%;
-  width: 100%;
+  height: 0px;
+  overflow: hidden;
+}
+
+.showNewTweet {
   border-style: groove;
   border-color: #f2f2f2;
   width: 410px;
   background-color: #f2f2f2;
+  margin-top: 55px;
   margin-left: 20px;
   margin-right: 20px;
   border-radius: 10px;
-  padding-top: 20px;
+  padding-top: 10px;
   padding-left: 2em;
   padding-right: 2em;
-  /* position: relative; */
 }
 
 section.form.input {
@@ -37,6 +28,12 @@ section.form.input {
 #newTweetError {
   color: #EC6128;
   font-style: italic;
+  margin: 0;
+}
+
+#tweetBtn {
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .new-tweet span {
