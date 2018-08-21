@@ -22,7 +22,7 @@
 
   <!-- Top nav bar (fixed) -->
   <nav id="nav-bar">
-    <img class="logo" src="/images/bird.png">
+    <img id="logo" class="logo" src="/images/bird.png">
     <span class="header">Tweeter</span>
     <div id="composeBtn">
       <button id="composeBtn" class="composeBtn" type="button" name="composeBtn">Compose a tweet</button>
@@ -32,12 +32,11 @@
   <!-- Page-specific (main) content here -->
   <main class="container">
 
-    <section class="new-tweet">
-      <h2 style="text-align: center;">Tweet your thoughts &#10000;</h2>
+    <section class="new-tweet showNewTweet">
+      <h2 style="text-align: center; padding-top: 20px;">Tweet your thoughts &#10000;</h2>
       <hr>
-      <form action="/tweets/" method="post">
+      <form id="newTweetForm" action="/tweets/" method="post">
         <textarea id="myTweet" name="text" maxlength="140" placeholder="What are you humming about?"></textarea>
-        <br />
         <input id="tweetBtn" type="submit" value="Tweet">
         <span id="counter" class="counter">140</span>
       </form>

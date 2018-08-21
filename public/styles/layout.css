@@ -3,6 +3,7 @@
  * https://css-tricks.com/international-box-sizing-awareness-day/
  * Do not modify these two selectors, please
  */
+
 html {
   box-sizing: border-box;
 }
@@ -10,36 +11,31 @@ html {
   box-sizing: inherit;
 }
 
-/*
- * Global layout stuff
- */
-
 body {
   font-family: 'Roboto Condensed', sans-serif;
   margin: 0;
-  padding-top: 60px;
+
   color: #244751;
   background-color: #f2f2f2;
 }
 
 main {
   background-color: #ffffff;
-  /* position: absolute; */
-  /* margin-top: 40px; */
   margin-left: auto;
   margin-right: auto;
+  padding-left: auto;
+  padding-right: auto;
   width: 450px;
 }
 
-.new-tweet {
-  margin-top: 20px;
-}
-
-#tweets-container {
+.tweets-container {
   padding-top: 20px;
   width: 410px;
-  /* margin: 20px; */
   position: relative;
+}
+
+.tweets-container:hover{
+  border-color: black;
 }
 
 .tweet {
@@ -47,13 +43,11 @@ main {
   border-style: groove;
   border-color: #f2f2f2;
   margin: 10px;
+  margin-left: 20px;
+  margin-right: 20px;
   border-radius: 10px;
   position: relative;
   transition: border-color .5s;
-}
-
-#tweets-container:hover{
-  border-color: black;
 }
 
 #name {
@@ -73,11 +67,6 @@ main {
   margin-top: 10px;
 }
 
-/* p {
-  padding-left: 1em;
-  padding-right: 1em;
-} */
-
 header {
   background-color: #f2f2f2;
   color: #0E6E8A;
@@ -89,8 +78,8 @@ header {
 }
 
 img {
-  max-width: 50px;
-  max-height: 50px;
+  width: 50px;
+  height: 50px;
   border-radius: 7px;
   float: left;
 }
@@ -109,6 +98,3 @@ footer {
   color: black;
   font-style: italic;
 }
-/*
- * Additional CSS can be defined below or in other CSS files, as per instructions
- */
