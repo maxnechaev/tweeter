@@ -20,7 +20,8 @@ $(document).ready(function() {
     const $div = $('<div>')
       .addClass("tweet");
 
-    const $article = $('<article>');
+    const $article = $('<article>')
+    .addClass("tweets-container tweets-container:hover");
     $div.append($article);
 
     const $header = $('<header>')
@@ -107,10 +108,9 @@ $(document).ready(function() {
 
   function showNewTweetForm() { // animates/shows the "New Tweet Form"
     $("#composeBtn").on('click', function() {
-      $(".new-tweet").animate({
+      $(".new-tweet").toggle({
           height: "240"
-        }, 300)
-        .addClass(".showNewTweet");
+        }, 300);
       $('#myTweet').focus();
     });
   }

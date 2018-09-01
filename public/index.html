@@ -25,14 +25,14 @@
     <img id="logo" class="logo" src="/images/bird.png">
     <span class="header">Tweeter</span>
     <div id="composeBtn">
-      <button id="composeBtn" class="composeBtn" type="button" name="composeBtn">Compose a tweet</button>
+      <button id="composeBtn" class="composeBtn" type="button" name="composeBtn">Compose</button>
     </div>
   </nav>
 
   <!-- Page-specific (main) content here -->
   <main class="container">
 
-    <section class="new-tweet showNewTweet">
+    <section class="new-tweet">
       <h2 style="text-align: center; padding-top: 20px;">Tweet your thoughts &#10000;</h2>
       <hr>
       <form id="newTweetForm" action="/tweets/" method="post">
@@ -43,7 +43,7 @@
     </section>
 
     <section>
-      <div id="tweets-container">
+      <div id="tweets-container" class="tweets-container tweets-container:hover">
         <!-- Existing tweets go here -->
       </div>
     </section>

@@ -25,12 +25,30 @@ module.exports = function(DataHelpers) {
     }
 
     const user = req.body.user ? req.body.user : userHelper.generateRandomUser();
+
+    // converting timestamp into a readable format
+    let created_at = new Date();
+    let sc = created_at.getSeconds();
+    let mn = created_at.getMinutes();
+    let hr = created_at.getHours();
+    let dd = created_at.getDate();
+    let mm = created_at.getMonth()+1;
+    let yyyy = created_at.getFullYear();
+    
+    if(dd < 10) {
+        dd = '0' + dd;
+    }
+    if(mm < 10) {
+        mm = '0' + mm;
+    }
+    created_at = "created at "+hr+":"+mn+":"+sc+" on "+dd+"/"+mm+"/"+yyyy;
+
     const tweet = {
       user: user,
       content: {
         text: req.body.text
       },
-      created_at: Date.now()
+      created_at: created_at
     };
 
     DataHelpers.saveTweet(tweet, (err) => {
