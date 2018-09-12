@@ -58,6 +58,7 @@ $(document).ready(function() {
 
   $("form").on("submit", function(event) { // managing the "New Tweet Form" submission
     event.preventDefault();
+    if (!validateForm()) return;
     const newTweet = $("form").serialize();
     $.ajax({
       type: "POST",
@@ -81,30 +82,13 @@ $(document).ready(function() {
   loadTweets(); // trigerring the function above
 
   function renderTweets(data) {
-    const $divMain = $('#tweets-container').addClass("tweets-container tweets-container:hover"); //TODO: don't forget to add event delegation here
+    const $divMain = $('#tweets-container').addClass("tweets-container tweets-container:hover");
     for (const tweet in data) {
       createTweetElement(data[tweet])
         .addClass("tweet")
         .prependTo($divMain);
     }
   }
-
-  (function validateForm($) { //validating the entered tweet
-    $('form').on('submit', function() {
-      let errors = false;
-      $(".errors").remove();
-
-      if ($("#myTweet").val() === "") {
-        $("#myTweet").after("<p id ='newTweetError' class='errors'> Tweet something in the field above </p> ");
-        errors = true;
-      } else if ($("#myTweet").val() === null) {
-        $("#myTweet")
-          .after("<p id ='newTweetError' class='errors'> Your tweet returned null </p> ");
-        errors = true;
-      }
-      return !errors;
-    });
-  })(jQuery);
 
   function showNewTweetForm() { // animates/shows the "New Tweet Form"
     $("#composeBtn").on('click', function() {
