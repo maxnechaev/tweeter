@@ -52,6 +52,11 @@ $(document).ready(function() {
       .addClass("footer")
       .text(`${created_at}`)
       .appendTo($article);
+
+    const $tweet_icons = $('<i class="fa fa-flag">&nbsp;<i class="fa fa-retweet">&nbsp;<i class="fa fa-heart">')
+      .addClass("tweet_icons")
+      .appendTo($created_at);
+
     return $article;
   };
 

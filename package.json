@@ -18,6 +18,7 @@
     "mongodb": "^2.2.36"
   },
   "devDependencies": {
+    "@fortawesome/fontawesome-free": "^5.3.1",
     "nodemon": "^1.9.2"
   }
 }
